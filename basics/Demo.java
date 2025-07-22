@@ -1,25 +1,29 @@
-
-class Computer {
-    public void playMusic() {
-        System.out.println("Playing music...");
-    }
-    public String getMeAPen(int cost){ 
-        if(cost >= 10) {
-        return "Pen";
-        }
-            return "Not enough money for a pen";
+abstract class Car {
+    public abstract void drive();
+    public abstract void fly();
+    public void playMusic(){
+        System.out.println("Play Music");
     }
 }
 
-    public class Demo {
 
-        
-        public static void main(String[] args) {
-          
-            Computer computer = new Computer();
-            computer.playMusic();
-            String str = computer.getMeAPen(0);
-            System.out.println(str);
-        }
+ class UpdateWagonR extends WagonR {
+    public void fly() {
+        System.out.println("WagonR cannot fly");
+    }
+}
+abstract class WagonR extends Car {
+    public void drive() {
+        System.out.println("Driving WagonR");
     }
 
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Car car = new UpdateWagonR();
+        car.drive();
+        car.playMusic();
+        car.fly();
+    }
+}
